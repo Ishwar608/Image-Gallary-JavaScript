@@ -1,10 +1,11 @@
 let myPhoto = [];
+let page = 1;
 const API_key = '563492ad6f91700001000001a50248a19756492687753a2523d04a50';
 const search = document.querySelector("#search");
 
-getImageApi = async (input) => {
+getImageApi = async (input, page) => {
     document.getElementById("gllry").innerHTML = `<h2 class="d-flex justify-content-center text-light">Loading...</h2>`;
-    const URL = await fetch(`https://api.pexels.com/v1/search?query=${input}&per_page=10`, {
+    const URL = await fetch(`https://api.pexels.com/v1/search?query=${input}&page=${page}&per_page=10`, {
         method: 'GET',
         headers: {
             Accept: 'application/json',
@@ -17,7 +18,7 @@ getImageApi = async (input) => {
 }
 display = (data) => {
     if (data.status == 400) {
-        document.getElementById("gllry").innerHTML = "Error 404"
+        document.getElementById("gllry").innerHTML = `<h2 class="text-light d-flex justify-content-center">Opp! input field can't be empty</h2>`;
     }
     console.log(data.photos);
     myPhoto = data.photos;
@@ -32,6 +33,13 @@ display = (data) => {
 }
 
 document.querySelector("form").addEventListener("submit", (event) => {
-    getImageApi(search.value);
+    getImageApi(search.value, page);
     event.preventDefault();
+    document.getElementById("lMore").style.display = "block";
+})
+
+
+document.getElementById("lMore").addEventListener("click", () => {
+    page += 1;
+    getImageApi(search.value, page);
 })

@@ -22,6 +22,9 @@ input[type="submit"]{
     border: 2px solid lightgray;
     color: #fff;
 }
+#lMore{
+    display: none;
+}
 
 
 
