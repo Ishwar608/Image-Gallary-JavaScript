@@ -25,8 +25,14 @@ input[type="submit"]{
 #lMore{
     display: none;
 }
-
-
+#gllry{
+    columns: 4 280px;
+    margin-top: 10px;
+}
+.photo{
+    width: 100%;
+    margin: 5px;
+}
 
 @media only screen and (max-width: 600px) {
     input{

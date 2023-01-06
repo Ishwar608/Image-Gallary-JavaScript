@@ -24,7 +24,7 @@ display = (data) => {
     myPhoto = data.photos;
     document.getElementById("gllry").innerHTML = myPhoto.map((value) => {
         return `
-        <div class="col-lg-4 col-md-12 mb-4 mb-lg-0">
+        <div class="photo">
             <img src="${value.src.original}" class="w-100 shadow-1-strong rounded mb-4"
             data-mdb-img="${value.src.original}" alt="...">
         </div>
